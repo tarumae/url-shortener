@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class LinksController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
   def index
     @links = Link.where(user: current_user)
     @link = Link.new
