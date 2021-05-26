@@ -1,12 +1,12 @@
 <div class="container">
   <h1>Create a new short link?</h1>
   <%= simple_form_for @link, remote: true do |f| %>
-    <%= f.input :long_link, as: :string %>
-    <%= f.submit %>
+    <%= f.input :long_link, as: :string, label: false, class: "form-control" %>
+    <%= f.submit class: "btn btn-primary" %>
   <% end %>
   
   <h1>This houses all the links that have already been created by the user</h1>
   <% @links.each do |link| %>
-    <p> <%= link_to link.long_link, link.long_link %> > <%= link_to link.short_link, link_path(link.short_link) %> > Clicks on your link: <%= link.counter %></p>
+    <p> <%= link_to link.long_link, link.long_link %> > <%= link_to "#{request.base_url + link_path(link.short_link)}", link_path(link.short_link) %> > Clicks on your link: <%= link.counter %></p>
   <% end %>
 </div>
