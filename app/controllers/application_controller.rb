@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:alert] = "This link does not exist anymore."
-    redirect_to root_path
+    redirect_to links_path
   end
 
   protected
