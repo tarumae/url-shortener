@@ -8,7 +8,7 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link = Link.find_by_short_link(params[:id])
+    @link = Link.find_by_short_link(params[:id]) || not_found
     @link.update(counter: @link.counter += 1)
     redirect_to @link.long_link
   end
