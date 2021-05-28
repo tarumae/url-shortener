@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     raise ActiveRecord::RecordNotFound
   end
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:alert] = "This link does not exist anymore."
+  rescue_from ActiveRecord::RecordNotFound do
+    flash[:alert] = 'This link does not exist anymore.'
     redirect_to root_path
   end
 
@@ -17,5 +17,4 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(*)
     links_path
   end
-
 end

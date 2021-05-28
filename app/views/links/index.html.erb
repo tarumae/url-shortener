@@ -1,12 +1,17 @@
 <div class="container">
   <h1>Create a new short link?</h1>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete  %>
   <%= simple_form_for @link, remote: true do |f| %>
     <%= f.input :long_link, as: :string, label: false, class: "form-control" %>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-success" %>
   <% end %>
   
   <h1>This houses all the links that have already been created by the user</h1>
-  <% @links.each do |link| %>
-    <p> <%= link_to link.long_link, link.long_link %> > <%= link_to "#{request.base_url + link_path(link.short_link)}", link_path(link.short_link) %> > Clicks on your link: <%= link.counter %></p>
+  <% @links.sort_by(&:created_at).reverse.each do |link| %>
+    <div class="card">
+      <p>Original Link: <%= link_to link.long_link, link.long_link, target: "_blank" %></p>
+      <p>Shortened Link: <%= link_to "#{request.base_url + link_path(link.short_link)}", link_path(link.short_link), target: "_blank" %> </p>
+      <p>Visit Counter: <%= link.counter %></p>
+    </div>
   <% end %>
 </div>
