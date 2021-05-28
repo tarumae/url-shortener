@@ -5,7 +5,9 @@
 .card {
   height: 155px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  height: auto;
+  padding: 5px;
   align-items: center;
   color: rgb(110, 110, 110);
   border: 1px solid lightgrey;
@@ -16,6 +18,10 @@
   p:last-child {
     margin-bottom: 0;
   }
+}
+
+.og-link {
+  max-width: 500px;
 }
 
 .short-link {

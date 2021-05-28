@@ -8,7 +8,7 @@
   </div>
   <h2 class="text-center">Your link history</h2>
   <% if @links.length == 0 %>
-    <p>Looks like You haven't created any short links yet. Try it out above!</p>
+    <p class="text-center mt-4">Looks like You haven't created any short links yet. Try it out above!</p>
   <% else %>
     <% @links.sort_by(&:created_at).reverse.each do |link| %>
       <div class="card">
