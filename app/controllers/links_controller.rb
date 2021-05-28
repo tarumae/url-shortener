@@ -24,6 +24,16 @@ class LinksController < ApplicationController
     end
   end
 
+  def destroy
+    @link = Link.find(params[:id])
+    if @link.destroy
+      flash[notice] = "Link successfully destroyed!"
+    else
+      flash[alert] = "Link could not be deleted. Perhaps try again?"
+    end
+    redirect_to links_path
+  end
+
   private
 
   def link_params
@@ -34,10 +44,10 @@ class LinksController < ApplicationController
     if link.errors.any?
       link.errors.each do |_attribute, message|
         flash[:alert] = message
-        redirect_to links_path
       end
     else
       flash[:alert] = 'Looks like something unexpected happened. Perhaps try again?'
     end
+    redirect_to links_path
   end
 end

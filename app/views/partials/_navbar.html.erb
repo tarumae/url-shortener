@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-custom">
   <%= link_to "/", class: "navbar-brand" do %>
-    <p>Shorten.me</p>
+    <p><i class="fas fa-link" style="margin-right: 5px;"></i>shorten.me</p>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Navbar toggler">
@@ -11,17 +11,17 @@
     <ul class="navbar-nav mr-auto">
       <% if !user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Sign in", new_user_session_path, class: "nav-link"  %>
+          <%= link_to "Sign in", new_user_session_path, class: "nav-link nav-color"  %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link nav-color" %>
         </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to "Dashboard", links_path, class: "nav-link"  %>
+          <%= link_to "Dashboard", links_path, class: "nav-link nav-color"  %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link nav-color" %>
         </li>
       <% end %>
     </ul>

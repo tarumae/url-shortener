@@ -1,17 +1,22 @@
 <div class="container">
-  <h1>Create a new short link?</h1>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete  %>
-  <%= simple_form_for @link, remote: true do |f| %>
-    <%= f.input :long_link, as: :string, label: false, class: "form-control" %>
-    <%= f.submit class: "btn btn-success" %>
-  <% end %>
-  
-  <h1>This houses all the links that have already been created by the user</h1>
-  <% @links.sort_by(&:created_at).reverse.each do |link| %>
-    <div class="card">
-      <p>Original Link: <%= link_to link.long_link, link.long_link, target: "_blank" %></p>
-      <p>Shortened Link: <%= link_to "#{request.base_url + link_path(link.short_link)}", link_path(link.short_link), target: "_blank" %> </p>
-      <p>Visit Counter: <%= link.counter %></p>
-    </div>
+  <h1 class="text-center">Copy your link here and click the button!</h1>
+  <div class="text-center mb-3">
+    <%= simple_form_for @link, remote: true do |f| %>
+      <%= f.input :long_link, as: :string, label: false, class: "form-control" %>
+      <%= f.submit "Make me shorter!", class: "btn btn-success" %>
+    <% end %>
+  </div>
+  <h2 class="text-center">Your link history</h2>
+  <% if @links.length == 0 %>
+    <p>Looks like You haven't created any short links yet. Try it out above!</p>
+  <% else %>
+    <% @links.sort_by(&:created_at).reverse.each do |link| %>
+      <div class="card">
+        <%= link_to "x", link_path(link), method: :delete, data: { confirm: "Are you sure you wish to delete this short link? "}, class: "close card-close" %>
+        <p class="og-link">Original Link: <%= link_to link.long_link, link.long_link, target: "_blank" %></p>
+        <p class="short-link">Shortened Link: <%= link_to "#{request.base_url + link_path(link.short_link)}", link_path(link.short_link), target: "_blank" %></p>
+        <p>This short link has had <span class="visits"><%= link.counter %></span> visit<%= "s" if link.counter > 1 || link.counter == 0 %></p>
+      </div>
+    <% end %>
   <% end %>
 </div>

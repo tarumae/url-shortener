@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .card {
-  height: 180px;
+  height: 155px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,4 +12,25 @@
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
   margin: 10px auto;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.short-link {
+  border: 1px solid #28a745;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 0;
+}
+
+.card-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.visits {
+  font-size: 26px;
 }
