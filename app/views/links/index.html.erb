@@ -2,7 +2,7 @@
   <h1 class="text-center">Copy your link here and click the button!</h1>
   <div class="text-center mb-3">
     <%= simple_form_for @link, remote: true do |f| %>
-      <%= f.input :long_link, as: :string, label: false, class: "form-control" %>
+      <%= f.input :long_link, as: :string, label: false, class: "form-control", placeholder: "https://..." %>
       <%= f.submit "Make me shorter!", class: "btn btn-success" %>
     <% end %>
   </div>
