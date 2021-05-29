@@ -26,6 +26,8 @@ After having done all that, the environment should be set and you should be able
 rails server
 ```
 
+then navigate to https://localhost:3000 in your browser.
+
 That's it!
 
 ### Features
