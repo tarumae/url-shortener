@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .card {
-  height: 155px;
   display: flex;
   justify-content: space-between;
   height: auto;
+  width: auto;
   padding: 5px;
   align-items: center;
   color: rgb(110, 110, 110);
@@ -22,6 +22,7 @@
 
 .og-link {
   max-width: 500px;
+  text-align: center;
 }
 
 .short-link {
